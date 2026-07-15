@@ -1,47 +1,35 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import themeContent from "@content/theme.json";
 import appThemes from "@json/themes.json";
 
-// Create a type containing all valid theme names.
 export type ThemeName = keyof typeof appThemes.themes;
 
-// Create the global theme store.
 export const useThemeStore = defineStore("theme", () => {
-  // Store the currently selected theme.
-  const selectedTheme = ref<ThemeName>(
-    themeContent.selectedTheme as ThemeName
-  );
+  // Set the default application theme.
+  const selectedTheme = ref<ThemeName>("ocean");
 
-  // Apply the selected theme colors as global CSS variables.
+  // Apply the selected theme.
   const applyTheme = (themeName: ThemeName) => {
     const theme = appThemes.themes[themeName];
 
-    // Apply every color from the selected theme to the root element.
     Object.entries(theme).forEach(([key, value]) => {
       document.documentElement.style.setProperty(
         `--theme-${key}`,
-        value
+        String(value)
       );
     });
 
-    // Update the currently selected theme.
     selectedTheme.value = themeName;
-
-    // Save the selected theme for future visits.
     localStorage.setItem("selectedTheme", themeName);
   };
 
-  // Load and apply the previously selected theme.
+  // Restore the saved theme or use the default theme.
   const initializeTheme = () => {
-    const savedTheme = localStorage.getItem(
-      "selectedTheme"
-    ) as ThemeName | null;
+    const savedTheme = localStorage.getItem("selectedTheme");
 
-    // Use the saved theme when valid, otherwise use the default theme.
-    const themeName =
+    const themeName: ThemeName =
       savedTheme && savedTheme in appThemes.themes
-        ? savedTheme
+        ? (savedTheme as ThemeName)
         : selectedTheme.value;
 
     applyTheme(themeName);
