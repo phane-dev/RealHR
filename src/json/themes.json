@@ -1,5 +1,19 @@
-```json
 {
+  "selectedTheme":{
+    "royal": {
+    "primary": "29 78 216",
+    "secondary": "79 70 229",
+    "accent": "124 58 237",
+    "background": "248 250 252",
+    "surface": "255 255 255",
+    "text": "30 41 59",
+    "muted": "100 116 139",
+    "border": "203 213 225",
+    "success": "22 163 74",
+    "danger": "220 38 38"
+  }
+},
+  "themes":{
   "ocean": {
     "primary": "37 99 235",
     "secondary": "14 165 233",
@@ -600,4 +614,5 @@
     "success": "22 163 74",
     "danger": "220 38 38"
   }
+}
 }

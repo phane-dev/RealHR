@@ -66,7 +66,7 @@ const props = defineProps({
   // Defines custom CSS or Tailwind classes for the drawer panel.
   drawerClass: {
     type: String,
-    default: "bg-white shadow-xl",
+    default: "p-4",
   },
 
   // Defines custom classes for the full-screen outer container.
@@ -160,7 +160,7 @@ const leaveToClass = computed(() =>
             :leave-to="leaveToClass"
           >
             <DialogPanel
-              class="pointer-events-auto absolute inset-y-0 w-full"
+              class="pointer-events-auto absolute inset-y-0 w-full overflow-auto bg-white shadow-xl"
               :class="[positionClass, sizeClass, drawerClass]"
             >
               <!-- Renders content provided by the parent component. -->

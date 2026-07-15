@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Sidebar from '@components/Sidebar.vue';
+import ThemeSwitcher from '@components/utils/ThemeSwitcher.vue';
 </script>
 
 <template>
     <div>
-        <Sidebar />
+        <theme-switcher />
         <p class="text-primary">Phaneendra</p>
     </div>
 </template>
