@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <HelloWorld />
+    <div>
+        <p class="text-primary">Phaneendra</p>
+    </div>
 </template>
